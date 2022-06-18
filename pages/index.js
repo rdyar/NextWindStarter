@@ -3,12 +3,13 @@ import Readme from '../readme.mdx'
 
 export default function index() {
   const meta = {
-    title: 'hi',
-    description: 'there',
+    title: 'Next JS and Tailwind Starter',
+    description:
+      'Starting point with a layout, sitemap creator and some other stuff',
   }
   return (
     <>
-      <PageHead />
+      <PageHead meta={meta} />
       <Readme />
     </>
   )
