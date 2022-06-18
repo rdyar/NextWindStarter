@@ -1,0 +1,56 @@
+# - Be careful, make sure the .html one is at the bottom and is short!
+# - css and js are cached for a long time, make sure you are cache busting (I use query string with timestamp)
+# - cache all the things for a long time. Images need to be renamed/busted if resaved
+# ---------- this file will not work if it contains empty lines -------------
+customHeaders:
+  - pattern: '**/*'
+    headers:
+      - key: 'Cache-Control'
+        value: 'public, must-revalidate, max-age=3153600'
+      - key: 'Strict-Transport-Security'
+        value: 'max-age=31536000; includeSubDomains'
+      - key: 'X-Frame-Options'
+        value: 'SAMEORIGIN'
+      - key: 'X-XSS-Protection'
+        value: '1; mode=block'
+      - key: 'X-Content-Type-Options'
+        value: 'nosniff'
+  # if it is css then long time
+  - pattern: '**/*.css'
+    headers:
+      - key: 'Cache-Control'
+        value: 'public, must-revalidate, max-age=25900000'
+      - key: 'Strict-Transport-Security'
+        value: 'max-age=315360000; includeSubDomains'
+      - key: 'X-Frame-Options'
+        value: 'SAMEORIGIN'
+      - key: 'X-XSS-Protection'
+        value: '1; mode=block'
+      - key: 'X-Content-Type-Options'
+        value: 'nosniff'
+  # if it is js then long time
+  - pattern: '**/*.js'
+    headers:
+      - key: 'Cache-Control'
+        value: 'public, must-revalidate, max-age=25900000'
+      - key: 'Strict-Transport-Security'
+        value: 'max-age=315360000; includeSubDomains'
+      - key: 'X-Frame-Options'
+        value: 'SAMEORIGIN'
+      - key: 'X-XSS-Protection'
+        value: '1; mode=block'
+      - key: 'X-Content-Type-Options'
+        value: 'nosniff'
+  # definitely do not cache html files for very long! 1 minute
+  - pattern: '**/*.html'
+    headers:
+      - key: 'Cache-Control'
+        value: 'public, must-revalidate, max-age=60'
+      - key: 'Strict-Transport-Security'
+        value: 'max-age=31536000; includeSubDomains'
+      - key: 'X-Frame-Options'
+        value: 'SAMEORIGIN'
+      - key: 'X-XSS-Protection'
+        value: '1; mode=block'
+      - key: 'X-Content-Type-Options'
+        value: 'nosniff'

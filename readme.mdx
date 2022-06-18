@@ -1,0 +1,87 @@
+# Next.js + Tailwind with sitemap generator, navbar and sticky footer
+
+- \_siteConfig file for lots of default settings like address info, site url, plausible etc.
+  - used in footer address section, footer copyright, sitemapCreator, Tracker
+- sitemapCreator, runs after build step, creates a sitemap of all files not excluded
+- Tracker component for plausible analytics
+- Set to use trailing slashes for urls to match jekyll, set in `next.config: trailingSlash: true`
+- MDX markdown support built in. Though you have to import the mdx file into a pages' file.
+- Site is exported as static HTML via the `next export` command in `package.json >> build` step.
+- \_Document.js file to inject `Html lang="en"` into head
+
+## Navbar
+
+The navigation is split into mobile and desktop. Mobile links are buttons and you probably can't have more than 3.  
+You can define the nav items for each nav bar via objects at the top of the page.
+
+The navbar is sticky - so it sticks to the top until you scroll down past the first page of content (?).
+
+## Footer
+
+The footer has 3 columns on desktop, the 3rd column is address info coming from the config file. It sticks to the bottom on screens without enough content to push it there.
+
+## PageHead Component
+
+On each page you should import the PageHead component and pass it a `meta` object that contains that pages' title and description that should be in the html head section for SEO. The PageHead component pulls in various things from the config to set some og tags as well. **You should probably go thru the PageHead component and make sure you agree with what it is doing**.
+
+## Style Guide
+
+Some basic styles are preset, see the [style guide](/samples/style-guide/).  
+These styles are in the styles/global.css file under the tailwind @layer base section.
+
+## CustomHttp.yml File for Caching on AWS Amplify
+
+if you use amplify for hosting the included customeHttp.yml file will provide some basic caching. This could be dangerous, use caution.
+
+## Gallery Component
+
+Simple gallery component with caption below.
+
+## FAQs via HTML Details/Summary Elements
+
+Sort of like an accordion.
+
+## Using the PageHead Component to Pass in Title/Description Per Page
+
+```
+import PageHead from '../components/PageHead'
+
+export default function index() {
+  const meta = {
+    title: 'hi',
+    description: 'there',
+  }
+  return (
+    <>
+      <PageHead meta={meta} />
+      ... your content here
+    </>
+  )
+}
+```
+
+## VS Code Snippet to Make New Functional Component with Meta for PageHead
+
+```
+ "Create RFC with Meta": {
+    "scope": "javascript,typescript",
+    "prefix": "nwrfc",
+    "body": [
+      "import PageHead from '../components/PageHead'",
+      "",
+      "export default function ${1:Index}() {",
+      " const meta = {",
+      "title: 'Your title here',",
+      "description: 'your desc here',",
+      "}",
+      "",
+      "return (",
+      "<>",
+      "<PageHead meta={meta} />",
+      "Your content here - don't forget to fill in the title and description above. Also make sure the path to import PageHead is correct.",
+      "</>",
+      ")",
+      "}"
+    ],
+    "description": "Create a new React Functional Component with PageHead and Meta object"
+```
