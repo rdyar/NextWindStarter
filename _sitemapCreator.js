@@ -6,7 +6,7 @@ const { siteURL } = require('./_siteConfig')
 const dirPath = path.join(__dirname, '/pages')
 //base url with no trailing slash
 const baseUrl = siteURL
-
+// will error if a directory is empty
 const files = dir.files(dirPath, { sync: true })
 //remove the dirPath from each path
 const normalizedFiles = files.map((file) => {
