@@ -21,7 +21,7 @@ const FAQs = () => {
               <summary className="flex cursor-pointer items-center pl-4 pt-4 font-medium">
                 <ReactMarkdown>{faq.q}</ReactMarkdown>
               </summary>
-              <div className="text-md border-t border-neutral-300 bg-neutral-50 pb-4 pl-4 pt-4 pl-12 leading-normal">
+              <div className="text-md border-t border-neutral-300 bg-neutral-50 px-2 pb-4 pt-4 leading-normal md:px-12">
                 <ReactMarkdown>{faq.a}</ReactMarkdown>
               </div>
             </details>
