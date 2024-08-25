@@ -9,11 +9,12 @@
   "dependencies": {
     "@mdx-js/loader": "^2.1.1",
     "@next/mdx": "^12.1.6",
-    "next": "latest",
+    "eslint-config-next": "^14.2.6",
+    "next": "^14.2.6",
     "node-dir": "^0.1.17",
     "plausible-tracker": "^0.3.8",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-markdown": "^8.0.3"
   },
   "devDependencies": {
